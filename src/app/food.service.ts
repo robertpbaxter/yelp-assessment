@@ -11,7 +11,7 @@ export class FoodService {
   private authKey =
     "Bearer TKeoKxm4CPCxArsgBsVlZDD2y6E_2FmBBlKlAGY2YTvMBN_2yP4ZCWnQ57aS6ShjqXG2IuboBtVuY_iCI2A-NJ3nkW3eLaz8_pVY6CeuUO4CjVtETxCMYHnH_fbqW3Yx";
   private baseUrl =
-    "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=";
+    "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?open_now=true&location=";
 
   constructor(private http: HttpClient) {}
 

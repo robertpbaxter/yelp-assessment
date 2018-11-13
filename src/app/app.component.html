@@ -12,10 +12,46 @@
         <option value="4">$$$$</option>
       </select>
     </label>
-    <label> City: <input #city placeholder="enter city" /> </label>
+    <label> City: <input #city placeholder="enter city" required /> </label>
     <label> State: <input #state placeholder="enter state" /> </label>
     <button (click)="getFood(price.value, city.value, state.value)">
       Kelp me out here!
     </button>
   </form>
+  <br />
+  <hr />
+  <br />
+
+  <div *ngIf="restaurant" class="results">
+    <div class="map">
+      <agm-map
+        [zoom]="15"
+        [latitude]="restaurant?.coordinates.latitude"
+        [longitude]="restaurant?.coordinates.longitude"
+      >
+        <agm-marker
+          [latitude]="restaurant?.coordinates.latitude"
+          [longitude]="restaurant?.coordinates.longitude"
+        >
+        </agm-marker>
+      </agm-map>
+    </div>
+    <div class="details">
+      <img
+        [src]="restaurant?.image_url"
+        alt="image"
+        height="400px"
+        width="auto"
+      />
+      <br />
+      <img src="assets/{{restaurant?.rating}}.png" alt="rating" />
+      <p>{{ restaurant?.name }}</p>
+      <p>
+        {{ restaurant?.location.address1 }}, {{ restaurant?.location.city }},
+        {{ restaurant?.location.state }} {{ restaurant?.location.zip_code }}
+      </p>
+      <p>{{ restaurant?.phone }}</p>
+      <p>{{ delivery }}</p>
+    </div>
+  </div>
 </div>

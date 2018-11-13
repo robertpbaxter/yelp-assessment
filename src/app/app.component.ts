@@ -9,11 +9,18 @@ import { Food } from "./food";
 })
 export class AppComponent {
   restaurant: any;
+  rating: string;
+  delivery: string;
   constructor(private foodService: FoodService) {}
 
   getFood(price: number, city: string, state: string): void {
     this.foodService.getFood({ price, city, state } as Food).subscribe(data => {
-      console.log(data.businesses[Math.floor(Math.random() * 20)]);
+      let result = data.businesses[Math.floor(Math.random() * 20)];
+      let delivers = result.transactions.indexOf("delivery");
+      delivers > 0
+        ? (this.delivery = "Delivers")
+        : (this.delivery = "Doesn't deliver");
+      this.restaurant = result;
     });
   }
 }
