@@ -17,7 +17,7 @@ export class AppComponent {
     this.foodService.getFood({ price, city, state } as Food).subscribe(data => {
       let result = data.businesses[Math.floor(Math.random() * 20)];
       let delivers = result.transactions.indexOf("delivery");
-      delivers > 0
+      delivers > -1
         ? (this.delivery = "Delivers")
         : (this.delivery = "Doesn't deliver");
       this.restaurant = result;
